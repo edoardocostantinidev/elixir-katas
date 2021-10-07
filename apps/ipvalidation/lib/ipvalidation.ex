@@ -15,10 +15,11 @@ defmodule Ipvalidation do
   Leading zeros (e.g. 01.02.03.04) are considered invalid
   """
 
+  def validate(""), do: false
+
   def validate(ip) do
-    ip != "" &&
-      String.split(ip, ~r/\./)
-      |> Enum.all?(&validate_octet/1)
+    String.split(ip, ~r/\./)
+    |> Enum.all?(&validate_octet/1)
   end
 
   defp validate_octet(octet),
