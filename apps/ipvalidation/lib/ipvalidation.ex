@@ -28,6 +28,7 @@ defmodule Ipvalidation do
 
   defp validate_octet(octet),
     do:
-      not Regex.match?(~r/\D/, octet) && String.at(octet, 0) != "0" &&
+      not Regex.match?(~r/\D/, octet) &&
+        not (String.at(octet, 0) == "0" && String.to_charlist(octet) |> Enum.count() > 1) &&
         String.to_integer(octet) < 256
 end

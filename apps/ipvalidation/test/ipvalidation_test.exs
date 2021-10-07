@@ -10,5 +10,6 @@ defmodule IpvalidationTest do
     assert Ipvalidation.validate("01.3.1.2") == false
     assert Ipvalidation.validate("1.3.1.256") == false
     assert Ipvalidation.validate("1.3.1.255") == true
+    assert Ipvalidation.validate("1.3.1.0") == true
   end
 end
