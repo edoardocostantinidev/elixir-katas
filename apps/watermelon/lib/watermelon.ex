@@ -20,6 +20,10 @@ defmodule Watermelon do
   """
   def divide(number) do
     remainder = number - 2
-    remainder >= 2 && Integer.is_even(remainder)
+    is_splittable(remainder)
+  end
+
+  defp is_splittable(number) do
+    number >= 2 && Integer.is_even(number)
   end
 end
