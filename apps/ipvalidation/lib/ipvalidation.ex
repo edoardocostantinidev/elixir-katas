@@ -18,8 +18,12 @@ defmodule Ipvalidation do
   def validate(""), do: false
 
   def validate(ip) do
-    String.split(ip, ~r/\./)
-    |> Enum.all?(&validate_octet/1)
+    octets = String.split(ip, ~r/\./)
+
+    octets
+    |> Enum.count() == 4 &&
+      octets
+      |> Enum.all?(&validate_octet/1)
   end
 
   defp validate_octet(octet),
