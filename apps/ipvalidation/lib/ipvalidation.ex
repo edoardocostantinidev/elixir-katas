@@ -16,5 +16,14 @@ defmodule Ipvalidation do
   """
 
   def validate(ip) do
+    ip
+    |> String.to_charlist()
+    |> Enum.count() > 0 &&
+      String.split(ip, ~r/\./)
+      |> Enum.all?(fn octet ->
+        is_number = not Regex.match?(~r/\D/, octet)
+        first_char_not_zero = String.at(octet, 0) != "0"
+        is_number && first_char_not_zero && String.to_integer(octet) < 256
+      end)
   end
 end
