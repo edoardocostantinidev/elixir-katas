@@ -2,7 +2,11 @@ defmodule WatermelonTest do
   use ExUnit.Case
   doctest Watermelon
 
-  test "greets the world" do
-    assert Watermelon.hello() == :world
+  test "divide" do
+    assert Watermelon.divide(2) == false
+    assert Watermelon.divide(3) == false
+    assert Watermelon.divide(4) == true
+    assert Watermelon.divide(5) == false
+    assert Watermelon.divide(6) == true
   end
 end
