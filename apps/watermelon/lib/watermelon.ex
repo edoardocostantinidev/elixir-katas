@@ -13,9 +13,13 @@ defmodule Watermelon do
   divide(5) == false # 5 = 2 + 3
   divide(6) == true  # 6 = 2 + 4
   """
+  require Integer
+
   @doc """
   8kyu
   """
   def divide(number) do
+    remainder = number - 2
+    remainder >= 2 && Integer.is_even(remainder)
   end
 end
